@@ -1,0 +1,106 @@
+{
+    "title": "Emacs key bindings for orz",
+    "rules": [
+        {
+            "description": "Emacs key bindings for orz [control+keys]",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": <%= from("d", ["control"], ["caps_lock", "option"]) %>,
+                    "to": <%= to([["delete_forward"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("j", ["control"], ["caps_lock", "option"]) %>,
+                    "to": <%= to([["delete_or_backspace"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("open_bracket", ["control"], ["caps_lock"]) %>,
+                    "to": <%= to([["escape"]]) %>,
+                    "conditions": [
+                        {
+                            "type": "keyboard_type_if",
+                            "keyboard_types": [
+                                "ansi",
+                                "iso"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("close_bracket", ["control"], ["caps_lock"]) %>,
+                    "to": <%= to([["escape"]]) %>,
+                    "conditions": [
+                        {
+                            "type": "keyboard_type_if",
+                            "keyboard_types": [
+                                "jis"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from(",", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["return_or_enter"]]) %>
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from(".", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([[","]]) %>
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("/", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["."]]) %>
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("b", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["left_arrow"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("f", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["right_arrow"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("m", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["down_arrow"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("@", ["control"], ["caps_lock", "shift", "option"]) %>,
+                    "to": <%= to([["up_arrow"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("v", ["control"], ["caps_lock", "shift"]) %>,
+                    "to": <%= to([["page_down"]]) %>,
+                    "conditions": [ <%= frontmost_application_unless("emacs_key_bindings_exception") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("a", ["control"], ["caps_lock", "shift"]) %>,
+                    "to": <%= to([["home"]]) %>,
+                    "conditions": [ <%= frontmost_application_if("microsoft_office") %> ]
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("e", ["control"], ["caps_lock", "shift"]) %>,
+                    "to": <%= to([["end"]]) %>,
+                    "conditions": [ <%= frontmost_application_if("microsoft_office") %> ]
+                }
+            ]
+        },
+    ]
+}
